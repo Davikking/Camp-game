@@ -1,9 +1,7 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist/public",
   "functions": {
-    "api/*.ts": {
-      "runtime": "nodejs18.x"
+    "api/index.ts": {
+      "runtime": "@vercel/node@2.15.10"
     }
   },
   "rewrites": [
