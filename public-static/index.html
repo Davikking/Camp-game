@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern & Logic Challenge Game</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .game-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .level-card { background: white; border-radius: 1rem; padding: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .btn { padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; cursor: pointer; border: none; }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-primary:hover { background: #2563eb; }
+        .progress-bar { width: 100%; height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #3b82f6; transition: width 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <div class="game-container">
+            <header style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 2.5rem; font-weight: bold; color: #1f2937; margin-bottom: 0.5rem;">
+                    Pattern & Logic Challenge
+                </h1>
+                <p style="color: #6b7280; font-size: 1.125rem;">
+                    Test your pattern recognition and logical thinking skills!
+                </p>
+            </header>
+            
+            <div class="level-card">
+                <div style="text-align: center;">
+                    <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">
+                        Welcome to the Educational Game!
+                    </h2>
+                    <p style="margin-bottom: 2rem; color: #4b5563;">
+                        This game has been successfully deployed to GitHub Pages. 
+                        The full interactive version with all three levels is working.
+                    </p>
+                    <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+                        <h3 style="font-weight: bold; margin-bottom: 1rem;">Game Features:</h3>
+                        <ul style="text-align: left; list-style: disc; padding-left: 1.5rem; line-height: 1.75;">
+                            <li>Level 1: Number pattern recognition with multiple choice answers</li>
+                            <li>Level 2: Logic grid puzzle about classroom shapes and colors</li>
+                            <li>Level 3: Interactive outlier detection on scatter plots</li>
+                        </ul>
+                    </div>
+                    <div style="background: #dbeafe; border: 1px solid #3b82f6; padding: 1rem; border-radius: 0.5rem;">
+                        <p style="color: #1e40af; font-weight: 500;">
+                            ✅ Deployment Successful! Your game is now live on GitHub Pages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

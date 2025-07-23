@@ -91,6 +91,43 @@ Your game includes:
 
 **That's it!** Your educational game is now live on the internet for free.
 
+## Troubleshooting GitHub Pages
+
+### If you see "Process completed with exit code 254" or other errors
+This happens when the build process fails. I've created a simplified deployment workflow:
+
+**Solution: Use the simple deployment file**
+1. In your repository, use `.github/workflows/simple-deploy.yml` instead
+2. Delete or rename the original `deploy.yml` file
+3. This simplified version:
+   - Uses `npm install` (no lock file issues)
+   - Builds only the frontend with `npx vite build`
+   - Combines build and deploy in one job
+
+**Alternative: Manual deployment**
+1. Run `npx vite build` locally
+2. Upload the `dist/public` folder contents to GitHub Pages manually
+3. Or use GitHub's web interface to upload files
+
+### If you see a white screen after deployment
+This happens when the base path isn't configured correctly. I've fixed this:
+
+**Automatic fix applied:**
+- Updated workflow to build with `--base=/Camp-game/` (matches your repository name)
+- Added debugging output to check build results
+- This ensures assets load correctly on GitHub Pages
+
+**To verify the fix:**
+1. Push the updated `.github/workflows/simple-deploy.yml` file
+2. Check the Actions tab - you'll see build debug output
+3. Your game should now display correctly
+
+### If deployment still fails
+1. Check the **Actions** tab for detailed error logs
+2. Make sure your repository is **public** (required for free GitHub Pages)
+3. Verify your repository name matches the base path in the workflow
+4. Try the manual deployment approach above
+
 ## Your Game Features
 
 - **Level 1**: Number pattern recognition with easy/medium/hard questions
