@@ -1,8 +1,8 @@
-name: Simple GitHub Pages Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -10,37 +10,39 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-      
+
       - name: Install dependencies
         run: npm install
-      
-      - name: Build with base path
+
+      - name: Build for GitHub Pages
         run: npx vite build --base=/Camp-game/
-      
-      - name: Debug - Check build output
-        run: |
-          echo "Build completed. Contents:"
-          ls -la dist/public/
-          echo "Index.html content:"
-          head -20 dist/public/index.html
-      
+
+      - name: Create .nojekyll file
+        run: touch dist/public/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        
-      - name: Upload to GitHub Pages
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/public
-          
+          path: './dist/public'
+
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
